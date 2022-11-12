@@ -1,50 +1,34 @@
 import { ConnectWallet } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
+import { MAIN_DESCRIPTION, MAIN_TITLE } from "../utils/constants/Main";
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="http://thirdweb.com/">thirdweb</a>!
-        </h1>
+        <h1 className={styles.title}>{MAIN_TITLE}</h1>
 
-        <p className={styles.description}>
-          Get started by configuring your desired network in{" "}
-          <code className={styles.code}>pages/_app.tsx</code>, then modify the{" "}
-          <code className={styles.code}>pages/index.tsx</code> file!
-        </p>
+        <p className={styles.description}>{MAIN_DESCRIPTION}</p>
 
         <div className={styles.connect}>
           <ConnectWallet />
         </div>
 
         <div className={styles.grid}>
-          <a href="https://portal.thirdweb.com/" className={styles.card}>
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className={styles.card}>
+          <a href="https://dashboard.detra.me/" className={styles.card}>
             <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
+            <p>Coming soon</p>
           </a>
 
-          <a
-            href="https://portal.thirdweb.com/templates"
-            className={styles.card}
-          >
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
+          <a href="https://docs.detra.me" className={styles.card}>
+            <h2>Docs &rarr;</h2>
+            <p>Coming soon</p>
+          </a>
+
+          <a href="https://help.detra.me" className={styles.card}>
+            <h2>Help &rarr;</h2>
+            <p>Coming soon</p>
           </a>
         </div>
       </main>
