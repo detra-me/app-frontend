@@ -30,6 +30,7 @@ const DefaultLayout = ({ children, routes }: any) => {
         alignContent="space-between"
         as="main"
         css={{
+          overflowX: 'visible!important',
           position: "relative",
           minHeight: "100vh",
           "@mdMax": {
