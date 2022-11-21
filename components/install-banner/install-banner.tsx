@@ -1,17 +1,17 @@
 import React from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { FeaturesGrid } from "@components";
-import { Button, Container, Grid, Snippet } from "@nextui-org/react";
-import { StyledCardBlur, Title, Subtitle } from "@primitives";
+import { Container, Grid } from "@nextui-org/react";
+import { StyledCardBlur, Subtitle } from "@primitives";
 import { BANNER_MAIN, BANNER_SUGGESTIONS } from "@utils/labels/Main";
 import { ButtonWithSnippet } from "@shared";
 
 const InstallBanner: React.FC = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleGetStartedClick = () => {
-    router.push("docs/guide/getting-started");
-  };
+  // const handleGetStartedClick = () => {
+  //   router.push("docs/guide/getting-started");
+  // };
 
   return (
     <StyledCardBlur
@@ -41,7 +41,7 @@ const InstallBanner: React.FC = () => {
           },
         }}
       >
-        <Grid.Container gap={2} css={{padding: 0}}>
+        <Grid.Container gap={2} css={{ padding: 0 }}>
           <Grid direction="column" justify="center" md={6} xs={12}>
             {BANNER_MAIN.title}
             <Subtitle
@@ -56,7 +56,10 @@ const InstallBanner: React.FC = () => {
             >
               {BANNER_MAIN.subtitle}
             </Subtitle>
-            <ButtonWithSnippet buttonTitle="Get started" buttonColor={'$green600'}/>
+            <ButtonWithSnippet
+              buttonTitle="Get started"
+              buttonColor={"$green600"}
+            />
           </Grid>
           <Grid css={{ py: "$10" }} md={6} xs={12}>
             <FeaturesGrid

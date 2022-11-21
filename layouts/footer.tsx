@@ -18,6 +18,7 @@ const Footer: React.FC<Props> = ({ css, containerCss }) => {
           padding: "$sm $xs",
         },
         ...containerCss,
+        ...css
       }}
       gap={2}
     ></Container>

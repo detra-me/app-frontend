@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Text, Row, Spacer } from "@nextui-org/react";
 import { Twitter, Discord, Github, StyledFlex, TextEntry } from "@components";
-import { Title, Subtitle } from "@primitives";
 import withDefaults from "@utils/with-defaults";
 
 import { StyledCommunityCard } from "./styles";

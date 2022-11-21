@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Section } from "@primitives";
 import { InView } from "react-intersection-observer";
 import { Grid } from "@nextui-org/react";
 import { CodeBlock } from "@components";
 
 const ComparationSection = ({ children, compare }: any) => {
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
   const generateCompareBlocks = useMemo(
     () =>
@@ -24,7 +24,7 @@ const ComparationSection = ({ children, compare }: any) => {
   );
 
   return (
-    <InView as="section" className="inview-section" onChange={setIsVisible}>
+    <InView as="section" className="inview-section">
       <Section css={{ zIndex: "$10" }}>
         {children}
         <Grid.Container gap={2} justify={"flex-start"}>

@@ -1,4 +1,4 @@
-import React, { memo, ReactChild, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Grid, Loading } from "@nextui-org/react";
 // import {Route} from "@lib/docs/page";
 // import {NotifyBanner} from "@components";
@@ -6,7 +6,6 @@ import { Container, Grid, Loading } from "@nextui-org/react";
 import Header from "./header";
 import Footer from "./footer";
 import Navbar from "./navbar";
-import loading from "@nextui-org/react/types/loading";
 
 // export interface Props {
 //   routes: Route[];

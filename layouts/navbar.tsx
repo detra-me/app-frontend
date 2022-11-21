@@ -24,7 +24,7 @@ import {
   useTheme,
   ThemeType,
 } from "@nextui-org/react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { useMediaQuery } from "@hooks/use-media-query";
 
 import { StyledNavContainer, StyledNavMainContainer } from "./styles";
@@ -36,10 +36,10 @@ export interface Props {
   isHome?: boolean;
 }
 
-const Navbar = ({ isHome, hasNotify, routes }: any) => {
+const Navbar = ({ isHome, hasNotify }: any) => {
   // return (<></>)
   const [expanded, setExpanded] = useState(true);
-  const router = useRouter();
+  // const router = useRouter();
   const isMobile = useMediaQuery(960);
   const [, setBodyHidden] = useBodyScroll(null, { scrollLayer: true });
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -200,7 +200,7 @@ const Navbar = ({ isHome, hasNotify, routes }: any) => {
                 />
               </Grid>
               <Grid>
-                <ConnectWallet colorMode={useTheme().type as ThemeType}/>
+                <ConnectWallet colorMode={useTheme().type as ThemeType} />
               </Grid>
               <Grid>
                 <Button
