@@ -65,7 +65,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   jsx,
 }) => {
   const router = useRouter();
-  const onlyHashChange = pathname === router.pathname;
+  const onlyHashChange = pathname && pathname === router.pathname;
 
   if (onlyHashChange) {
     return (
@@ -92,7 +92,7 @@ const NavLink: React.FC<NavLinkProps> = ({
           css
         )}
         disabled={comingSoon}
-        href={pathname}
+        href={pathname ?? href}
         selected={selected}
         onClick={(e: any) => !comingSoon && onClick && onClick(e)}
       >

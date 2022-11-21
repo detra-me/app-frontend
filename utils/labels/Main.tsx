@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   Devices,
   Flash,
-  LandingMapImage,
   Magic,
   Moon,
   NextJsLogo,
@@ -10,7 +9,12 @@ import {
 } from "@components";
 import { ButtonWithSnippet } from "@shared";
 import { Title } from "@primitives";
-import { PLANS } from "./plans";
+import { PLANS } from "../constants/plans";
+import { STATUSES } from "@utils/constants/statuses";
+
+export const RELEASE_STATUS = STATUSES.alpha
+
+export const CODE_BLOCK_EX = `<SparkSection>\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n</SparkSection>`
 
 export const FIRST_TITLE = [
   { text: "We want to make information transfer" },
@@ -124,7 +128,7 @@ export const LANDING_HERO = [
     title: SHARE_TO_EARN_TITLE,
     subtitle: SHARE_TO_EARN_SUBTITLE,
     jsx: STARE_TO_EARN_JSX,
-    rightJsx: <LandingMapImage />,
+    rightJsx: <></>,
   },
   {
     title: CONVIENT_DASHBOARD_TITLE,

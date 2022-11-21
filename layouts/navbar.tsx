@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import {
   Logo,
   MenuToggle,
   Badge,
-  Twitter,
-  Discord,
-  Github,
   ThemeToggle,
-  Heart,
   NavLink,
 } from "@components";
 import { Box } from "@primitives";
 import NextLink from "next/link";
 import {
-  Row,
-  Col,
   Spacer,
   Link,
-  Button,
   Container,
   useBodyScroll,
   Grid,
@@ -29,6 +22,8 @@ import { useMediaQuery } from "@hooks/use-media-query";
 
 import { StyledNavContainer, StyledNavMainContainer } from "./styles";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import { LINKS, SOCIALS } from "@utils/constants/links";
+import { RELEASE_STATUS } from "@utils/labels/Main";
 
 export interface Props {
   routes?: [];
@@ -77,6 +72,156 @@ const Navbar = ({ isHome, hasNotify }: any) => {
 
   const showBlur = !!expanded || !!detached || isHome;
 
+  const LogoRow = memo(function LogoRow() {
+    return (
+      <Grid.Container alignItems="center" justify="flex-start">
+        <NextLink href={LINKS.main.href}>
+          <Link href={LINKS.main.href}>
+            <Logo
+              auto
+              css={{
+                cursor: "pointer",
+                transition: "$default",
+              }}
+            />
+          </Link>
+        </NextLink>
+        <Spacer x={0.4} />
+        <Badge
+          solid
+          css={{
+            px: "$4",
+            "@mdMax": {
+              display: "none",
+            },
+          }}
+          type="secondary"
+        >
+          {RELEASE_STATUS}
+        </Badge>
+      </Grid.Container>
+    );
+  });
+
+  const LinksRow = memo(function LinksRow() {
+    return (
+      <Grid.Container gap={2} alignItems="center" justify="flex-start">
+        <Spacer x={1} y={0} />
+        <NavLink href={LINKS.docs.href} title={"Docs"} selected={false} />
+        <Spacer x={1} y={0} />
+        <NavLink
+          href={LINKS.dashboard.href}
+          title={"Dashboard"}
+          selected={false}
+        />
+        <Spacer x={1} y={0} />
+        <NavLink
+          href={LINKS.gateway.href}
+          pathname={LINKS.gateway.pathname}
+          title={"Gateway"}
+          selected={false}
+        />
+      </Grid.Container>
+    );
+  });
+
+  const SocialsRow = memo(function SocialsRow() {
+    return (
+      <Grid.Container gap={1} wrap={"nowrap"} alignItems="center" justify="flex-start">
+        <Grid>
+          <NavLink
+            href={SOCIALS.twitter.href}
+            jsx={SOCIALS.twitter.logo}
+            selected={false}
+            css={{
+              "& svg": {
+                fill: "$colors$accents6",
+              },
+            }}
+          />
+        </Grid>
+        <Grid>
+          <NavLink
+            href={SOCIALS.discord.href}
+            jsx={SOCIALS.discord.logo}
+            selected={false}
+            css={{
+              "& svg": {
+                fill: "$colors$accents6",
+              },
+            }}
+          />
+        </Grid>
+        <Grid>
+          <NavLink
+            href={SOCIALS.github.href}
+            jsx={SOCIALS.github.logo}
+            selected={false}
+            css={{
+              "& svg": {
+                fill: "$colors$accents6",
+              },
+            }}
+          />
+        </Grid>
+        <Grid>
+          <NavLink
+            jsx={<ThemeToggle />}
+            selected={false}
+            css={{
+              "& svg": {
+                fill: "$colors$accents6",
+              },
+            }}
+          />
+        </Grid>
+      </Grid.Container>
+    );
+  });
+
+  const ButtonsRow = memo(function ButtonsRow() {
+    return (
+      <Grid.Container
+        gap={1}
+        alignItems="center"
+        justify="flex-end"
+        wrap={"nowrap"}
+        css={{
+          "@lgMax": {
+            maxWidth: "100%",
+          },
+        }}
+      >
+        <Grid xs={0} sm={5} md={5} lg={5}>
+          <SocialsRow />
+        </Grid>
+        <Grid xs={12} sm={7} md={7} lg={7}>
+          <ConnectWallet colorMode={useTheme().type as ThemeType} />
+        </Grid>
+      </Grid.Container>
+    );
+  });
+
+  const MobileMenuBoxRow = memo(function MobileMenuBoxRow() {
+    return (
+      <Grid.Container justify="center" alignItems="center">
+        <Box
+          css={{
+            height: "100%",
+            minHeight: "40px",
+            minWidth: "30px",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+          onClick={onToggleNavigation}
+        >
+          <MenuToggle expanded={expanded} />
+        </Box>
+      </Grid.Container>
+    );
+  });
+
   return (
     <StyledNavMainContainer id="navbar-container">
       <StyledNavContainer detached={detached} showBlur={showBlur}>
@@ -87,157 +232,34 @@ const Navbar = ({ isHome, hasNotify }: any) => {
           lg={true}
           wrap="nowrap"
         >
-          <Col
-            span={8}
-            css={{
-              "@mdMax": {
-                width: "100%",
-              },
-            }}
+          <Grid.Container
+            gap={0}
+            wrap={"nowrap"}
+            alignItems="center"
+            justify="flex-start"
           >
-            <Row align="center" justify="flex-start">
-              <NextLink href="/">
-                <Link href="/">
-                  <Logo
-                    auto
-                    css={{
-                      cursor: "pointer",
-                      transition: "$default",
-                    }}
-                  />
-                </Link>
-              </NextLink>
-              <Spacer x={0.4} />
-              <Badge
-                solid
-                css={{
-                  px: "$4",
-                  "@mdMax": {
-                    display: "none",
-                  },
-                }}
-                type="secondary"
-              >
-                Beta
-              </Badge>
-            </Row>
-          </Col>
-          <Col span={4} css={{ "@mdMax": { d: "none" } }}>
-            <Row align="center" justify="center">
-              <Spacer x={1} y={0} />
-              <NavLink
-                href="https://docs.detra.me"
-                pathname={"docs"}
-                title={"Docs"}
-                selected={false}
-              />
-              <Spacer x={1} y={0} />
-              <NavLink
-                href="https://dashboard.detra.me"
-                pathname={"dashboard"}
-                title={"Dashboard"}
-                selected={false}
-              />
-              <Spacer x={1} y={0} />
-              <NavLink
-                href="/gateway"
-                pathname={"gateway"}
-                title={"Gateway"}
-                selected={false}
-              />
-            </Row>
-          </Col>
-          <Col>
-            <Grid.Container gap={1} justify="flex-end" alignItems="center">
-              <Grid>
-                <NavLink
-                  href="https://docs.detra.me"
-                  pathname={"docs"}
-                  jsx={<Twitter size={24} />}
-                  selected={false}
-                  css={{
-                    "& svg": {
-                      fill: "$colors$accents6",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid>
-                <NavLink
-                  href="https://docs.detra.me"
-                  pathname={"docs"}
-                  jsx={<Discord size={24} />}
-                  selected={false}
-                  css={{
-                    "& svg": {
-                      fill: "$colors$accents6",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid>
-                <NavLink
-                  href="https://docs.detra.me"
-                  pathname={"docs"}
-                  jsx={<Github size={24} />}
-                  selected={false}
-                  css={{
-                    "& svg": {
-                      fill: "$colors$accents6",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid>
-                <NavLink
-                  jsx={<ThemeToggle />}
-                  selected={false}
-                  css={{
-                    "& svg": {
-                      fill: "$colors$accents6",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid>
-                <ConnectWallet colorMode={useTheme().type as ThemeType} />
-              </Grid>
-              <Grid>
-                <Button
-                  auto
-                  color="error"
-                  icon={<Heart fill="currentColor" filled />}
-                  // eslint-disable-next-line react/no-children-prop
-                  children={"Sponsor"}
-                />
-              </Grid>
-            </Grid.Container>
-          </Col>
-          <Col
-            css={{
-              size: "100%",
-              display: "none",
-              "@mdMax": {
-                display: "flex",
-                justifyContent: "flex-end",
-              },
-            }}
-          >
-            <ThemeToggle css={{ m: "0" }} />
-            <Box
+            <Grid xs={12} sm={5.5} md={5.5} lg={6}>
+              <LogoRow />
+            </Grid>
+            <Grid xs={0} sm={6} md={6} lg={7}>
+              <LinksRow />
+            </Grid>
+            <Grid
               css={{
-                height: "100%",
-                minHeight: "40px",
-                minWidth: "30px",
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
+                "@mdMax": {
+                  maxWidth: "100%",
+                },
+                "@media (max-width: 480px)": {
+                  display: "none",
+                },
               }}
-              onClick={onToggleNavigation}
             >
-              <MenuToggle expanded={expanded} />
-            </Box>
-          </Col>
+              <ButtonsRow />
+            </Grid>
+            <Grid xs={1} sm={0} lg={0}>
+              <MobileMenuBoxRow />
+            </Grid>
+          </Grid.Container>
         </Container>
       </StyledNavContainer>
     </StyledNavMainContainer>

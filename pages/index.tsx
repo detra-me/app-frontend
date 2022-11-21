@@ -2,15 +2,12 @@ import type { NextPage } from "next";
 
 import DefaultLayout from "@layouts/default";
 import {
-  CodeDemo,
   Community,
   Email,
   FAQ,
   FeaturesGrid,
   Hero,
   InstallBanner,
-  LandingBannerIcon,
-  LandingMapImage,
   Plans,
   SparkSection,
 } from "@components";
@@ -38,7 +35,6 @@ const Home: NextPage = () => {
           }
           title={FIRST_TITLE}
           subtitle={FIRST_SUBTITLE}
-          rightJsx={<LandingBannerIcon />}
         />
       </Section>
       <Spacer y={2} />
@@ -51,16 +47,13 @@ const Home: NextPage = () => {
           title={LANDING_HERO[0].title}
           subtitle={LANDING_HERO[0].subtitle}
           jsx={LANDING_HERO[0].jsx}
-          rightJsx={
-            <CodeDemo>
-              {`<SparkSection>\n   <FeaturesGrid features={TOP_FEATURES} />\n</SparkSection>`}
-            </CodeDemo>
-          }
         />
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
-        <Hero {...LANDING_HERO[1]} rightJsx={<LandingMapImage />} />
+        <Hero
+          {...LANDING_HERO[1]}
+        />
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
