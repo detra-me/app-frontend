@@ -1,38 +1,86 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
-import { MAIN_DESCRIPTION, MAIN_TITLE } from "../utils/constants/Main";
+
+import DefaultLayout from "@layouts/default";
+import {
+  CodeDemo,
+  Community,
+  Email,
+  FAQ,
+  FeaturesGrid,
+  Hero,
+  InstallBanner,
+  LandingBannerIcon,
+  LandingMapImage,
+  Plans,
+  SparkSection,
+} from "@components";
+import {
+  FIRST_SUBTITLE,
+  FIRST_TITLE,
+  LANDING_HERO,
+  PRICING,
+  TOP_FEATURES,
+} from "@utils/labels/Main";
+import { ButtonWithSnippet } from "@shared";
+import { Section } from "@primitives";
+import { Spacer } from "@nextui-org/react";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{MAIN_TITLE}</h1>
-
-        <p className={styles.description}>{MAIN_DESCRIPTION}</p>
-
-        <div className={styles.connect}>
-          <ConnectWallet />
-        </div>
-
-        <div className={styles.grid}>
-          <a href="https://dashboard.detra.me/" className={styles.card}>
-            <h2>Dashboard &rarr;</h2>
-            <p>Coming soon</p>
-          </a>
-
-          <a href="https://docs.detra.me" className={styles.card}>
-            <h2>Docs &rarr;</h2>
-            <p>Coming soon</p>
-          </a>
-
-          <a href="https://help.detra.me" className={styles.card}>
-            <h2>Help &rarr;</h2>
-            <p>Coming soon</p>
-          </a>
-        </div>
-      </main>
-    </div>
+    <DefaultLayout>
+      <Section>
+        <Hero
+          jsx={
+            <ButtonWithSnippet
+              buttonTitle={"Start Free Trial"}
+              snippetJsx={<Email />}
+            />
+          }
+          title={FIRST_TITLE}
+          subtitle={FIRST_SUBTITLE}
+          rightJsx={<LandingBannerIcon />}
+        />
+      </Section>
+      <Spacer y={2} />
+      <SparkSection>
+        <FeaturesGrid features={TOP_FEATURES} />
+      </SparkSection>
+      <Spacer y={2} />
+      <SparkSection>
+        <Hero
+          title={LANDING_HERO[0].title}
+          subtitle={LANDING_HERO[0].subtitle}
+          jsx={LANDING_HERO[0].jsx}
+          rightJsx={
+            <CodeDemo>
+              {`<SparkSection>\n   <FeaturesGrid features={TOP_FEATURES} />\n</SparkSection>`}
+            </CodeDemo>
+          }
+        />
+      </SparkSection>
+      <Spacer y={2} />
+      <SparkSection>
+        <Hero {...LANDING_HERO[1]} rightJsx={<LandingMapImage />} />
+      </SparkSection>
+      <Spacer y={2} />
+      <SparkSection>
+        <InstallBanner />
+      </SparkSection>
+      <Spacer y={2} />
+      <SparkSection>
+        <Hero {...LANDING_HERO[2]} />
+      </SparkSection>
+      <Spacer y={1} />
+      <SparkSection>
+        <Plans pricing={PRICING} />
+      </SparkSection>
+      <SparkSection>
+        <FAQ />
+      </SparkSection>
+      <SparkSection>
+        <Community />
+      </SparkSection>
+    </DefaultLayout>
   );
 };
 
