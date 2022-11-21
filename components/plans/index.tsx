@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { CheckIcon, StyledBox, StyledFlex, TextEntry } from "@components";
 import { Button, Card, Divider, Grid, Text } from "@nextui-org/react";
 import React, { memo } from "react";

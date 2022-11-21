@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Card, Grid, Text } from "@nextui-org/react";
 import { memo } from "react";
 

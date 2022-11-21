@@ -2,11 +2,7 @@ import React from "react";
 import { Grid, GridProps, Text, Row, CSS } from "@nextui-org/react";
 import withDefaults from "@utils/with-defaults";
 import { useRouter } from "next/router";
-import { motion, useAnimation, useSpring } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import { useMeasure } from "react-use";
-import { Section } from "@primitives";
+import { motion } from "framer-motion";
 import { FeatureItem } from "./styles";
 
 export interface Feature {
