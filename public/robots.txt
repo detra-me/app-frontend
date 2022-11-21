@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://app.detra.me
+
+# Sitemaps
+Sitemap: https://app.detra.me/sitemap.xml

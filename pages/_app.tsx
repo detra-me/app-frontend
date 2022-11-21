@@ -4,7 +4,6 @@ import { SUPPORTED_CHANS } from "../utils/constants/Main";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import globalStyles from "../styles/globalStyles";
-import "../styles/sandpack.css";
 import { darkTheme, lightTheme } from "@theme/shared";
 
 // This is the chainId your dApp will work on.
