@@ -7,7 +7,6 @@ import {
   NextJsLogo,
   Note,
 } from "@components";
-import { ButtonWithSnippet } from "@shared";
 import { Title } from "@primitives";
 import { PLANS } from "../constants/plans";
 import { STATUSES } from "@utils/constants/statuses";
@@ -112,11 +111,6 @@ const CONVIENT_DASHBOARD_SUBTITLE = [
   },
 ];
 
-const CONVIENT_DASHBOARD_JSX = (
-  <ButtonWithSnippet buttonTitle={"Go to dashboard"} />
-);
-const STARE_TO_EARN_JSX = <ButtonWithSnippet buttonTitle={"Share to earn"} />;
-
 export const LANDING_HERO = [
   {
     title: SECURE_SHARING_TITLE,
@@ -127,13 +121,13 @@ export const LANDING_HERO = [
   {
     title: SHARE_TO_EARN_TITLE,
     subtitle: SHARE_TO_EARN_SUBTITLE,
-    jsx: STARE_TO_EARN_JSX,
+    jsx: <></>,
     rightJsx: <></>,
   },
   {
     title: CONVIENT_DASHBOARD_TITLE,
     subtitle: CONVIENT_DASHBOARD_SUBTITLE,
-    jsx: CONVIENT_DASHBOARD_JSX,
+    jsx: <></>,
     rightJsx: <></>,
   },
 ];
@@ -161,7 +155,7 @@ export const BANNER_SUGGESTIONS = [
   {
     title: "Permanent store",
     description:
-      "You can permanently store your information in the blockchain, and it will exist as long as the network exists",
+      "You can permanently store your information in the blockchain",
     icon: <NextJsLogo fill="#FF4ECD" />,
     href: "/docs/guide/nextui-plus-nextjs",
   },

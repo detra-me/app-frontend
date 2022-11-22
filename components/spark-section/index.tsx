@@ -18,7 +18,7 @@ export const SparkSection = ({ children }: { children: ReactChild }) => {
   const dx = useSpring(x, springConfig);
 
   const boxVariant = {
-    visible: { opacity: 1, scale: [1, 0.95, 1] },
+    visible: { opacity: 1, scale: [1, 0.99, 1] },
     hidden: { opacity: 0, scale: 0 },
   };
 
@@ -34,10 +34,6 @@ export const SparkSection = ({ children }: { children: ReactChild }) => {
     <>
       <motion.section
         ref={ref}
-        drag
-        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-        dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
-        dragElastic={1}
         variants={boxVariant}
         animate={control}
         initial="hidden"

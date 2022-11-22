@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import DefaultLayout from "@layouts/default";
 import {
   Community,
+  DashboardImage,
   Email,
   FAQ,
   FeaturesGrid,
@@ -10,6 +11,7 @@ import {
   InstallBanner,
   Plans,
   SparkSection,
+  StyledBox,
 } from "@components";
 import {
   FIRST_SUBTITLE,
@@ -47,6 +49,7 @@ const Home: NextPage = () => {
           title={LANDING_HERO[0].title}
           subtitle={LANDING_HERO[0].subtitle}
           jsx={LANDING_HERO[0].jsx}
+          reverse
         />
       </SparkSection>
       <Spacer y={2} />
@@ -61,7 +64,7 @@ const Home: NextPage = () => {
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
-        <Hero {...LANDING_HERO[2]} />
+        <Hero {...LANDING_HERO[2]} fullWidth rightJsx={<StyledBox><DashboardImage /></StyledBox>}/>
       </SparkSection>
       <Spacer y={1} />
       <SparkSection>

@@ -5,6 +5,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import globalStyles from "../styles/globalStyles";
 import { darkTheme, lightTheme } from "@theme/shared";
+import { Practice } from "@components";
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Mainnet;
@@ -29,6 +30,7 @@ function AppFrontend({ Component, pageProps }: AppProps) {
           autoConnect
           supportedChains={SUPPORTED_CHANS}
         >
+          <Practice />
           <Component {...pageProps} />
         </ThirdwebProvider>
       </NextUIProvider>

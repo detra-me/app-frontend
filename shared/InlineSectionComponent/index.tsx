@@ -1,10 +1,13 @@
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
 import { Text, Grid } from "@nextui-org/react";
 import { MainInterfaces } from "@types";
 import { TextEntry } from "@components";
 
 export const InlineSectionComponent = (
-  props: MainInterfaces.IInlineSection.Entries
+  props: MainInterfaces.IInlineSection.Entries & {
+    reverse?: boolean;
+    fullWidth?: boolean;
+  }
 ) => {
   const ColWithContent = ({
     content,
@@ -15,17 +18,21 @@ export const InlineSectionComponent = (
 
     return (
       <Grid.Container
-        justify="space-between"
+        justify={props.fullWidth ? "center" : "space-between"}
         alignItems="center"
         direction="row"
       >
         <Grid>
-          <Text h1 weight="bold">
+          <Text
+            h1
+            weight="bold"
+            css={{ textAlign: props.fullWidth ? "center" : "left" }}
+          >
             {content.title.map((item) => (
               <TextEntry key={item.key || item.text} {...item} />
             ))}
           </Text>
-          <Text h3>
+          <Text h3 css={{ textAlign: props.fullWidth ? "center" : "left" }}>
             {content.subtitle.map((item) => (
               <TextEntry key={item.key || item.text} {...item} />
             ))}
@@ -36,16 +43,18 @@ export const InlineSectionComponent = (
     );
   };
 
+  const blockWidth = useMemo(() => props.fullWidth ? 12 : 5, [props.fullWidth]);
+
   return (
     <Grid.Container
       justify="space-between"
-      alignItems="flex-start"
-      direction="row"
+      alignItems={"flex-start"}
+      direction={props.reverse ? "row-reverse" : "row"}
     >
-      <Grid lg={5}>
+      <Grid lg={blockWidth}>
         <ColWithContent content={props} />
       </Grid>
-      <Grid lg={5}>{props.rightJsx}</Grid>
+      <Grid lg={blockWidth}>{props.rightJsx}</Grid>
     </Grid.Container>
   );
 };

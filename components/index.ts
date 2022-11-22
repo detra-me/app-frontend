@@ -28,6 +28,8 @@ export { default as Plans } from "./plans"
 export { default as TextEntry } from "./text-entry"
 export { default as FAQ } from "./faq"
 
+export { default as Practice } from "./practice"
+
 // export {default as Logo} from "./logo";
 // export {default as Hero} from "./hero";
 // export {default as ImageBrowser} from "./image-browser";
