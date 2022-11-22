@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 // import withDefaults from "@utils/with-defaults";
-// import { toCapitalize } from "@utils/index";
+
 // import { TWITTER_USER_NAME, SITE_URL } from "@lib/constants";
 import { useTheme } from "@nextui-org/react";
 import withDefaults from "@utils/with-defaults";

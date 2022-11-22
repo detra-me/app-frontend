@@ -1,4 +1,5 @@
 import * as React from "react";
+import { memo } from "react";
 
 export interface Props {
   fill?: string;
@@ -25,4 +26,4 @@ const NextJS: React.FC<Props> = ({fill, size, width = 24, height = 24, ...props}
   );
 };
 
-export default NextJS;
+export default memo(NextJS);

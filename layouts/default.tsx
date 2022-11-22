@@ -25,12 +25,14 @@ const DefaultLayout = ({ children, routes }: any) => {
     <div id="app-container">
       <Header />
       {/* <NotifyBanner href="/docs/components/navbar" text="Navbar component" /> */}
-      <Navbar hasNotify isHome routes={routes} />
+      <Grid css={{ display: loading ? "none" : "block" }}>
+        <Navbar hasNotify isHome routes={routes} />
+      </Grid>
       <Container
         alignContent="space-between"
         as="main"
         css={{
-          overflowX: 'visible!important',
+          overflowX: "visible!important",
           position: "relative",
           minHeight: "100vh",
           "@mdMax": {

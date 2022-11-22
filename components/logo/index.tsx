@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { CSS, styled } from "@nextui-org/react";
 
 export interface LogoProps {
@@ -95,4 +95,4 @@ const Logo: React.FC<LogoProps> = ({
   return <Large />;
 };
 
-export default Logo;
+export default memo(Logo);

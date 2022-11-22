@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react";
+import React, { memo, ReactChild } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -39,4 +39,4 @@ export const SparkSection = ({ children }: { children: ReactChild }) => {
   );
 };
 
-export default SparkSection;
+export default memo(SparkSection);

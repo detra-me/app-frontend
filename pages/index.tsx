@@ -23,6 +23,7 @@ import {
 import { ButtonWithSnippet } from "@shared";
 import { Section } from "@primitives";
 import { Spacer } from "@nextui-org/react";
+import { memo } from "react";
 
 const Home: NextPage = () => {
   return (
@@ -54,9 +55,7 @@ const Home: NextPage = () => {
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
-        <Hero
-          {...LANDING_HERO[1]}
-        />
+        <Hero {...LANDING_HERO[1]} />
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
@@ -64,7 +63,15 @@ const Home: NextPage = () => {
       </SparkSection>
       <Spacer y={2} />
       <SparkSection>
-        <Hero {...LANDING_HERO[2]} fullWidth rightJsx={<StyledBox><DashboardImage /></StyledBox>}/>
+        <Hero
+          {...LANDING_HERO[2]}
+          fullWidth
+          rightJsx={
+            <StyledBox>
+              <DashboardImage />
+            </StyledBox>
+          }
+        />
       </SparkSection>
       <Spacer y={1} />
       <SparkSection>
@@ -80,4 +87,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

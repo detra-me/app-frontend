@@ -1,3 +1,4 @@
+import { memo } from "react";
 import InstallBanner from "./install-banner";
 
-export default InstallBanner;
+export default memo(InstallBanner);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Community from "./community";
 
-export default Community;
+export default memo(Community);

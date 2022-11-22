@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { InlineSection } from "@shared";
 import { MainInterfaces } from "@types";
 
@@ -8,4 +8,4 @@ export const Hero = (
   return <InlineSection {...props} />;
 };
 
-export default Hero;
+export default memo(Hero);

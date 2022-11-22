@@ -23,7 +23,7 @@ export interface Props {
   isHome?: boolean;
 }
 
-const Navbar = ({ isHome, hasNotify }: any) => {
+const Navbar = ({ isHome, hasNotify, css }: any) => {
   // return (<></>)
   const [expanded, setExpanded] = useState(true);
   // const router = useRouter();
@@ -66,7 +66,7 @@ const Navbar = ({ isHome, hasNotify }: any) => {
 
   const LogoRow = memo(function LogoRow() {
     return (
-      <Grid.Container alignItems="center" justify="flex-start">
+      <Grid.Container css={css} alignItems="center" justify="flex-start">
         <NavLink href={LINKS.main.href} pathname="/" selected={false}>
           <Logo
             auto
