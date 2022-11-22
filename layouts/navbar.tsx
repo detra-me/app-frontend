@@ -1,16 +1,8 @@
 import React, { useState, useEffect, memo } from "react";
-import {
-  Logo,
-  MenuToggle,
-  Badge,
-  ThemeToggle,
-  NavLink,
-} from "@components";
+import { Logo, MenuToggle, Badge, ThemeToggle, NavLink } from "@components";
 import { Box } from "@primitives";
-import NextLink from "next/link";
 import {
   Spacer,
-  Link,
   Container,
   useBodyScroll,
   Grid,
@@ -75,30 +67,28 @@ const Navbar = ({ isHome, hasNotify }: any) => {
   const LogoRow = memo(function LogoRow() {
     return (
       <Grid.Container alignItems="center" justify="flex-start">
-        <NextLink href={LINKS.main.href}>
-          <Link href={LINKS.main.href}>
-            <Logo
-              auto
-              css={{
-                cursor: "pointer",
-                transition: "$default",
-              }}
-            />
-          </Link>
-        </NextLink>
-        <Spacer x={0.4} />
-        <Badge
-          solid
-          css={{
-            px: "$4",
-            "@mdMax": {
-              display: "none",
-            },
-          }}
-          type="secondary"
-        >
-          {RELEASE_STATUS}
-        </Badge>
+        <NavLink href={LINKS.main.href} pathname="/" selected={false}>
+          <Logo
+            auto
+            css={{
+              cursor: "pointer",
+              transition: "$default",
+            }}
+          />
+          <Spacer x={0.4} />
+          <Badge
+            solid
+            css={{
+              px: "$4",
+              "@mdMax": {
+                display: "none",
+              },
+            }}
+            type="secondary"
+          >
+            {RELEASE_STATUS}
+          </Badge>
+        </NavLink>
       </Grid.Container>
     );
   });
@@ -127,7 +117,12 @@ const Navbar = ({ isHome, hasNotify }: any) => {
 
   const SocialsRow = memo(function SocialsRow() {
     return (
-      <Grid.Container gap={1} wrap={"nowrap"} alignItems="center" justify="flex-start">
+      <Grid.Container
+        gap={1}
+        wrap={"nowrap"}
+        alignItems="center"
+        justify="flex-start"
+      >
         <Grid>
           <NavLink
             href={SOCIALS.twitter.href}

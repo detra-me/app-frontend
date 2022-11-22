@@ -63,6 +63,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   onClick,
   css,
   jsx,
+  children,
 }) => {
   const router = useRouter();
   const onlyHashChange = pathname && pathname === router.pathname;
@@ -77,7 +78,7 @@ const NavLink: React.FC<NavLinkProps> = ({
         href={pathname}
         selected={selected}
       >
-        {title}
+        {children ?? title}
       </BaseLink>
     );
   }
@@ -96,7 +97,7 @@ const NavLink: React.FC<NavLinkProps> = ({
         selected={selected}
         onClick={(e: any) => !comingSoon && onClick && onClick(e)}
       >
-        {title ?? jsx}
+        {children ?? title ?? jsx}
       </BaseLink>
     </NextLink>
   );

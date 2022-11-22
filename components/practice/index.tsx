@@ -1,38 +1,54 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useCallback, useMemo } from "react";
 import Particles from "react-tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import { ThemeType, useTheme } from "@nextui-org/react";
-import ParticleLight from './particles-light.json';
-import ParticleDark from './particles-dark.json';
-import { ISourceOptions } from 'tsparticles-engine';
+import ParticleLight from "./particles-light.json";
+import ParticleDark from "./particles-dark.json";
+import ParticleMobile from "./particles-mobile.json";
+import { ISourceOptions } from "tsparticles-engine";
+import { isMobile } from "react-device-detect";
 
 const Practice = () => {
-    const tType: ThemeType = useTheme().type as ThemeType;
-    const params = {
-      dark: ParticleDark,
-      light: ParticleLight,
-    }
+  const tType: ThemeType = useTheme().type as ThemeType;
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const param = useMemo(() => params[tType] || params.dark, [tType]);
+  const params = {
+    dark: ParticleDark,
+    light: ParticleLight,
+  };
 
-    const particlesInit = useCallback(async (engine: Engine) => {
-        console.log(engine);
+  const param = useMemo(() => {
+    const base = params[tType] || params.dark;
 
-        // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-        // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-        // starting from v2 you can add only the features you need reducing the bundle size
-        await loadFull(engine);
-    }, []);
+    return isMobile ? { ...base, ...ParticleMobile } : base;
+  }, [tType, isMobile]);
 
-    const particlesLoaded = useCallback(async (container: Container | undefined) => {
-        await console.log(container);
-    }, []);
+  const particlesInit = useCallback(async (engine: Engine) => {
+    console.log(engine);
 
-    return (
-        <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={param as ISourceOptions}/>
-    );
+    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(
+    async (container: Container | undefined) => {
+      await console.log(container);
+    },
+    []
+  );
+
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={param as ISourceOptions}
+    />
+  );
 };
 
 export default Practice;
