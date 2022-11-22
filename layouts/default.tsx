@@ -4,8 +4,12 @@ import { Container, Grid, Loading } from "@nextui-org/react";
 // import {NotifyBanner} from "@components";
 
 import Header from "./header";
-import Footer from "./footer";
-import Navbar from "./navbar";
+// import Footer from "./footer";
+import dynamic from "next/dynamic";
+// import Navbar from "./navbar";
+
+const Navbar = dynamic(() => import("./navbar"));
+const Footer = dynamic(() => import("./footer"));
 
 // export interface Props {
 //   routes: Route[];

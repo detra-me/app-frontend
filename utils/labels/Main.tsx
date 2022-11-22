@@ -1,19 +1,19 @@
 import * as React from "react";
-import {
-  Devices,
-  Flash,
-  Magic,
-  Moon,
-  NextJsLogo,
-  Note,
-} from "@components";
 import { Title } from "@primitives";
 import { PLANS } from "../constants/plans";
 import { STATUSES } from "@utils/constants/statuses";
+import dynamic from "next/dynamic";
 
-export const RELEASE_STATUS = STATUSES.alpha
+const Devices = dynamic(() => import("../../components/icons/devices"));
+const Flash = dynamic(() => import("../../components/icons/flash"));
+const Moon = dynamic(() => import("../../components/icons/moon"));
+const NextJsLogo = dynamic(() => import("../../components/icons/nextjs-logo"));
+const Note = dynamic(() => import("../../components/icons/note"));
+const Magic = dynamic(() => import("../../components/icons/magic"));
 
-export const CODE_BLOCK_EX = `<SparkSection>\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n</SparkSection>`
+export const RELEASE_STATUS = STATUSES.alpha;
+
+export const CODE_BLOCK_EX = `<SparkSection>\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n   <FeaturesGrid features={TOP_FEATURES} />\n</SparkSection>`;
 
 export const FIRST_TITLE = [
   { text: "We want to make information transfer" },
@@ -154,8 +154,7 @@ export const BANNER_SUGGESTIONS = [
   },
   {
     title: "Permanent store",
-    description:
-      "You can permanently store your information in the blockchain",
+    description: "You can permanently store your information in the blockchain",
     icon: <NextJsLogo fill="#FF4ECD" />,
     href: "/docs/guide/nextui-plus-nextjs",
   },
@@ -174,5 +173,5 @@ export const PRICING = {
   title: "Transparent pricing.",
   subtitle:
     "With Detra, your costs will always be predictable. Try Detra for free today.",
-  plans: PLANS
+  plans: PLANS,
 };
