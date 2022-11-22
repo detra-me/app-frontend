@@ -1,6 +1,6 @@
 import { StyledFlex, TextEntry } from "@components";
 import { Button, Divider, Grid, Spacer, Text } from "@nextui-org/react";
-import React from "react";
+import React, { memo } from "react";
 
 export const Faq = () => {
   return (
@@ -55,4 +55,4 @@ export const Faq = () => {
   );
 };
 
-export default Faq;
+export default memo(Faq);

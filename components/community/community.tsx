@@ -27,7 +27,10 @@ const Community: React.FC<CommunityProps> = ({ twitter, github, discord }) => {
             <TextEntry text={COMMUNITY_SUGGESTIONS.title} />
           </Text>
           <Text h3>
-            <TextEntry text={COMMUNITY_SUGGESTIONS.subtitle} color={"$gray600"} />
+            <TextEntry
+              text={COMMUNITY_SUGGESTIONS.subtitle}
+              color={"$gray600"}
+            />
           </Text>
         </StyledFlex>
       </Grid>

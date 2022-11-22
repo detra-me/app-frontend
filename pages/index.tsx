@@ -75,10 +75,10 @@ const Home: NextPage = () => {
       </SparkSection>
       <Spacer y={1} />
       <SparkSection>
-        <Plans pricing={PRICING} />
+        <FAQ />
       </SparkSection>
       <SparkSection>
-        <FAQ />
+        <Plans pricing={PRICING} />
       </SparkSection>
       <SparkSection>
         <Community />
