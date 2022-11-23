@@ -33,7 +33,6 @@ const DefaultLayout = ({ children, routes }: any) => {
         <Navbar hasNotify isHome routes={routes} />
       </Grid>
       <Container
-        alignContent="space-between"
         as="main"
         css={{
           overflowX: "visible!important",
@@ -45,10 +44,11 @@ const DefaultLayout = ({ children, routes }: any) => {
         }}
         display="flex"
         id="main-container"
+        alignItems="center"
         lg={true}
       >
         <Grid.Container
-          css={{ height: "40rem", display: loading ? "flex" : "none" }}
+          css={{ height: "fit-content", display: loading ? "flex" : "none" }}
           justify="center"
           alignItems="center"
         >
