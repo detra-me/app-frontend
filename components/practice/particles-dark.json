@@ -2,11 +2,11 @@
   "fullScreen": {
     "enable": true
   },
-  "fpsLimit": 80,
+  "fpsLimit": 120,
   "particles": {
     "number": {
-      "value": 80,
-      "limit": 200,
+      "value": 60,
+      "limit": 120,
       "density": {
         "enable": true,
         "value_area": 800

@@ -1,5 +1,6 @@
 import { Text } from "@nextui-org/react";
 import { MainInterfaces } from "@types";
+import { memo } from "react";
 
 const prepareTextCss = ({
   color,
@@ -32,4 +33,4 @@ export const TextEntry = ({
   </Text>
 );
 
-export default TextEntry;
+export default memo(TextEntry);

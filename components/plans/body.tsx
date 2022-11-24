@@ -1,23 +1,16 @@
 // @ts-nocheck
 
 import { StyledBox, StyledFlex, CheckIcon } from "@components";
-import { Card, Button, Divider, Text } from "@nextui-org/react";
-import { memo } from "react";
+import { Card, Button, Divider, Grid, Text } from "@nextui-org/react";
+import { memo, useCallback } from "react";
 
 export const PlanBody = memo<{ price; options }>(function PlanBody({
   price,
   options,
 }) {
-  return (
-    <Card.Body css={{ py: "$2" }}>
-      <Text css={{ display: "contents" }} h2>
-        ${price}
-      </Text>
-      <Text css={{ display: "contents", color: "$accents8" }}>/mo</Text>
-      <Button css={{ mt: "$7", mb: "$12" }}>Get Started</Button>
-
-      <Divider />
-      <StyledBox as={"ul"}>
+  const Options = useCallback(() => {
+    return (
+      <Grid>
         {options.map((option) => (
           <StyledFlex
             key={option.key}
@@ -31,7 +24,20 @@ export const PlanBody = memo<{ price; options }>(function PlanBody({
             </Text>
           </StyledFlex>
         ))}
-      </StyledBox>
+      </Grid>
+    );
+  }, [options]);
+
+  return (
+    <Card.Body css={{ py: "$2" }}>
+      <Text css={{ display: "contents" }} h2>
+        ${price}
+      </Text>
+      <Text css={{ display: "contents", color: "$accents8" }}>/mo</Text>
+      <Button css={{ mt: "$7", mb: "$12" }}>Get Started</Button>
+      <Options />
+      <Divider />
+      <StyledBox as={"ul"}></StyledBox>
     </Card.Body>
   );
 });

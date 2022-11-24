@@ -1,7 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import { Grid, Text, Row, Spacer } from "@nextui-org/react";
 import { Twitter, Discord, Github, StyledFlex, TextEntry } from "@components";
-import withDefaults from "@utils/with-defaults";
 
 import { StyledCommunityCard } from "./styles";
 import { COMMUNITY_SUGGESTIONS } from "@utils/labels/Main";
@@ -11,12 +10,6 @@ export interface CommunityProps {
   github?: string;
   discord?: string;
 }
-
-const defaultProps = {
-  twitter: "https://twitter.com/",
-  github: "https://github.com/detra/",
-  discord: "https://discord.gg/",
-};
 
 const Community: React.FC<CommunityProps> = ({ twitter, github, discord }) => {
   return (
@@ -95,4 +88,4 @@ const Community: React.FC<CommunityProps> = ({ twitter, github, discord }) => {
   );
 };
 
-export default withDefaults(Community, defaultProps);
+export default memo(Community);

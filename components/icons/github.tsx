@@ -15,7 +15,14 @@ const defaultProps = {
   className: "",
 };
 
-const Github: React.FC<Props> = ({size, fill, width, height, className, ...props}) => {
+const Github: React.FC<Props> = ({
+  size,
+  fill,
+  width,
+  height,
+  className,
+  ...props
+}) => {
   return (
     <svg
       className={className}

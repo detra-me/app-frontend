@@ -17,7 +17,6 @@ import {
   FIRST_SUBTITLE,
   FIRST_TITLE,
   LANDING_HERO,
-  PRICING,
   TOP_FEATURES,
 } from "@utils/labels/Main";
 import { ButtonWithSnippet } from "@shared";
@@ -78,7 +77,7 @@ const Home: NextPage = () => {
         <FAQ />
       </SparkSection>
       <SparkSection>
-        <Plans pricing={PRICING} />
+        <Plans />
       </SparkSection>
       <SparkSection>
         <Community />
